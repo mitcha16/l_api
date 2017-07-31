@@ -127,6 +127,7 @@ GEM
       rspec-support (~> 3.6.0)
     rspec-support (3.6.0)
     ruby_dep (1.5.0)
+    shoulda (2.11.3)
     shoulda-matchers (3.1.2)
       activesupport (>= 4.0.0)
     slop (3.6.0)
@@ -164,6 +165,7 @@ DEPENDENCIES
   puma (~> 3.7)
   rails (~> 5.1.1)
   rspec-rails (~> 3.5)
+  shoulda
   shoulda-matchers (~> 3.1)
   spring
   spring-watcher-listen (~> 2.0.0)

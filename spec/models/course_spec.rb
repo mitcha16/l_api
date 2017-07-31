@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Course, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should have many lessons" do
+    c = Course.reflect_on_association(:lessons)
+    expect(c.macro).to eq(:has_many)
+  end
 end
