@@ -10,11 +10,13 @@ class Api::V1::AssignmentsController < ApplicationController
   end
 
   def complete
+    binding.pry
     @assignments = Assignment.all.where(status: 'Complete')
     {assignments: json_response(@assignments)}.to_json
   end
 
   def incomplete
+    binding.pry
     @assignments = Assignment.all.where(status: 'Incomplete')
     {assignments: json_response(@assignments)}.to_json
   end

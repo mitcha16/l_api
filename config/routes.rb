@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :courses, only: [:index, :show]
-      resources :assignments, only: [:index, :show]
+      resources :assignments, only: [:index]
       resources :lessons, only: [:index, :show]
       get '/assignments/complete', to: 'assignments#complete'
       get '/assignments/incomplete', to: 'assignments#incomplete'
