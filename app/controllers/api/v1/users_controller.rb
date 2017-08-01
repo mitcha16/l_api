@@ -16,8 +16,8 @@ class Api::V1::UsersController < ApplicationController
 
   def assignments
     @user = User.find(params[:id])
-    @assignments = User.assignments
-    {assignments: json_response(@assignments)}.to_json 
+    @assignments = @user.assignments
+    {assignments: json_response(@assignments)}.to_json
   end
 
   private
