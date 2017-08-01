@@ -1,12 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe 'Courses API', type: :request do
+  let(:course_id) { Course.all.first.id }
   describe 'GET /courses' do
     before { get '/courses' }
 
     it 'returns courses' do
       expect(json).not_to be_empty
-      expect(json.size).to eq(10)
+      expect(json.size).to eq(2)
     end
 
     it 'returns status code 200' do
@@ -17,7 +18,7 @@ RSpec.describe 'Courses API', type: :request do
   describe 'GET /courses/:id' do
     before { get "/courses/#{course_id}" }
 
-    context 'when the record exists' do
+    context 'when the course exists' do
       it 'returns the course' do
         expect(json).not_to be_empty
         expect(json['id']).to eq(course_id)
@@ -28,7 +29,7 @@ RSpec.describe 'Courses API', type: :request do
       end
     end
 
-    context 'when the record does not exist' do
+    context 'when the course does not exist' do
       let(:course_id) { 100 }
 
       it 'returns status code 404' do
@@ -36,7 +37,7 @@ RSpec.describe 'Courses API', type: :request do
       end
 
       it 'returns a not found message' do
-        expect(response.body).to match(/Couldn't find Todo/)
+        expect(response.body).to match(/Couldn't find Course/)
       end
     end
   end
