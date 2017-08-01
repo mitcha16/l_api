@@ -1,6 +1,6 @@
 class Assignment < ApplicationRecord
   belongs_to :lesson
-  belongs_to :user, :foreign_key => 'assignee_id'
+  belongs_to :user
   before_create :add_assignees_count
 
   private
