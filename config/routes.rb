@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get '/assignments/incomplete', to: 'assignments#incomplete'
       get '/courses/:id/assignments', to: 'courses#assignments'
       get '/users/:id/assignments', to: 'users#assignments'
+      get '/lessons/:id/assignments', to: 'lessons#assignments'
       resources :users do
         # resources :assignments #for later functionality
         # resources :lessons, only: [:index, :show]
