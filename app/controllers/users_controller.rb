@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def index
     @users = User.all
-    json_response(@users)
+    json_response(@users) #make sure its similar to lessonly docs
   end
 
   def show
@@ -11,12 +11,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
-      flash[:success] = "Thanks for signing up!"
-      json_response(@user)
-    else
-      flash[:error] = "There was a problem creating your account"
-    end
+    json_response(@user) if @user.save
+  end
+
+  def assignments
+    @user = User.find(params[:id])
+    @assignments = User.assignments
+    json_response(@assignments)#make this into json value with same values of lessonly docs JSON.parse belongs in other end of api
   end
 
   private
