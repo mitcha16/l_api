@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Users API', type: :request do
   let(:user_id) { User.all.first.id }
   describe 'GET /users' do
-    before { get '/users' }
+    before { get '/api/v1/users' }
 
     it 'returns users' do
       expect(json).not_to be_empty
@@ -16,7 +16,7 @@ RSpec.describe 'Users API', type: :request do
   end
 
   describe 'GET /users/:id' do
-    before { get "/users/#{user_id}" }
+    before { get "/api/v1/users/#{user_id}" }
 
     context 'when the user exists' do
       it 'returns the user' do

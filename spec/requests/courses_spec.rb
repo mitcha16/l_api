@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Courses API', type: :request do
   let(:course_id) { Course.all.first.id }
   describe 'GET /courses' do
-    before { get '/courses' }
+    before { get '/api/v1/courses' }
 
     it 'returns courses' do
       expect(json).not_to be_empty
@@ -16,7 +16,7 @@ RSpec.describe 'Courses API', type: :request do
   end
 
   describe 'GET /courses/:id' do
-    before { get "/courses/#{course_id}" }
+    before { get "/api/v1/courses/#{course_id}" }
 
     context 'when the course exists' do
       it 'returns the course' do

@@ -7,7 +7,7 @@ RSpec.describe 'Assignments API', type: :request do
   let(:user_id) { user.id }
 
   describe 'GET /assignments' do
-    before { get '/assignments' }
+    before { get '/api/v1/assignments' }
 
     it 'returns assignments' do
       expect(json).not_to be_empty
@@ -20,7 +20,7 @@ RSpec.describe 'Assignments API', type: :request do
   end
 
   describe 'GET /assignments/:id' do
-    before { get "/assignments/#{assignment_id}" }
+    before { get "/api/v1/assignments/#{assignment_id}" }
 
     context 'when the assignment exists' do
       it 'returns the assignment' do
@@ -33,7 +33,7 @@ RSpec.describe 'Assignments API', type: :request do
       end
 
       it 'can change the status' do
-        post "/users/#{user_id}/assignments/#{assignment_id}/change_status"
+        post "/api/v1/users/#{user_id}/assignments/#{assignment_id}/change_status"
         user_assignment = assignment.user_assignments.where(["user_id = :user_id and assignment_id = :assignment_id",
                                                             { user_id: user_id, assignment_id: assignment_id }]).first
 

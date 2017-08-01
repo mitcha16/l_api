@@ -1,4 +1,4 @@
-class LessonsController < ApplicationController
+class Api::V1::LessonsController < ApplicationController
   def index
     @lessons = Lesson.all
     json_response(@lessons)

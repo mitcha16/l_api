@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Lessons API', type: :request do
   let(:lesson_id) { Lesson.all.first.id }
   describe 'GET /lessons' do
-    before { get '/lessons' }
+    before { get '/api/v1/lessons' }
 
     it 'returns lessons' do
       expect(json).not_to be_empty
@@ -16,7 +16,7 @@ RSpec.describe 'Lessons API', type: :request do
   end
 
   describe 'GET /lessons/:id' do
-    before { get "/lessons/#{lesson_id}" }
+    before { get "/api/v1/lessons/#{lesson_id}" }
 
     context 'when the lesson exists' do
       it 'returns the lesson' do
