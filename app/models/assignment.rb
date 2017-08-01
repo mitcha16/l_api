@@ -1,5 +1,13 @@
 class Assignment < ApplicationRecord
-  has_many :user_assignments
   belongs_to :lesson
-  has_many :users, through: :user_assignments
+  belongs_to :user, :foreign_key => 'assignee_id'
+  before_create :add_assignees_count
+
+  private
+  def add_assignees_count
+    if self.lesson
+      lesson = self.lesson
+      lesson.update_attribute(:assignees_count, (lesson.assignees_count + 1) )
+    end
+  end
 end

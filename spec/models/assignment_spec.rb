@@ -7,7 +7,7 @@ RSpec.describe Assignment, type: :model do
   end
 
   it "should have many users" do
-    a = Assignment.reflect_on_association(:users)
-    expect(a.macro).to eq(:has_many)
+    a = Assignment.reflect_on_association(:user)
+    expect(a.macro).to eq(:belongs_to)
   end
 end

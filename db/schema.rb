@@ -10,15 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170731190755) do
+ActiveRecord::Schema.define(version: 20170801160631) do
 
   create_table "assignments", force: :cascade do |t|
     t.date "due_by"
     t.date "assigned_at"
     t.date "completed_at"
     t.integer "lesson_id"
+    t.integer "assignee_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status"
     t.index ["lesson_id"], name: "index_assignments_on_lesson_id"
   end
 
@@ -37,16 +39,6 @@ ActiveRecord::Schema.define(version: 20170731190755) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_lessons_on_course_id"
-  end
-
-  create_table "user_assignments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "assignment_id"
-    t.string "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["assignment_id"], name: "index_user_assignments_on_assignment_id"
-    t.index ["user_id"], name: "index_user_assignments_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

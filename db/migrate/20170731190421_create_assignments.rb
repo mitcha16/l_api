@@ -5,6 +5,7 @@ class CreateAssignments < ActiveRecord::Migration[5.1]
       t.date :assigned_at
       t.date :completed_at
       t.references :lesson, index: true
+      t.integer :assignee_id
       t.timestamps
     end
   end

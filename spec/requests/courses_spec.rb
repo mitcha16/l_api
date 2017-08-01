@@ -27,6 +27,11 @@ RSpec.describe 'Courses API', type: :request do
       it 'returns status code 200' do
         expect(response).to have_http_status(200)
       end
+
+      it 'returns the assignments' do
+        get "/api/v1/courses/#{course_id}/assignments"
+        expect(json).not_to be_empty
+      end
     end
 
     context 'when the course does not exist' do

@@ -1,7 +1,7 @@
 class Api::V1::UsersController < ApplicationController
   def index
     @users = User.all
-    json_response(@users) #make sure its similar to lessonly docs
+    {users: json_response(@users)}.to_json  #to format similarly to lessonly docs
   end
 
   def show
@@ -17,7 +17,7 @@ class Api::V1::UsersController < ApplicationController
   def assignments
     @user = User.find(params[:id])
     @assignments = User.assignments
-    json_response(@assignments)#make this into json value with same values of lessonly docs JSON.parse belongs in other end of api
+    {assignments: json_response(@assignments)}.to_json 
   end
 
   private

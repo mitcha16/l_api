@@ -11,7 +11,7 @@ RSpec.describe 'Assignments API', type: :request do
 
     it 'returns assignments' do
       expect(json).not_to be_empty
-      expect(json.size).to eq(8)
+      expect(json.size).to eq(24)
     end
 
     it 'returns status code 200' do
@@ -29,16 +29,6 @@ RSpec.describe 'Assignments API', type: :request do
       end
 
       it 'returns status code 200' do
-        expect(response).to have_http_status(200)
-      end
-
-      it 'can change the status' do
-        post "/api/v1/users/#{user_id}/assignments/#{assignment_id}/change_status"
-        user_assignment = assignment.user_assignments.where(["user_id = :user_id and assignment_id = :assignment_id",
-                                                            { user_id: user_id, assignment_id: assignment_id }]).first
-
-        expect(user_assignment.status).to eq('Complete')
-        expect(json).not_to be_empty
         expect(response).to have_http_status(200)
       end
     end

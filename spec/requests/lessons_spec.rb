@@ -7,7 +7,7 @@ RSpec.describe 'Lessons API', type: :request do
 
     it 'returns lessons' do
       expect(json).not_to be_empty
-      expect(json.size).to eq(4)
+      expect(json.size).to eq(6)
     end
 
     it 'returns status code 200' do
